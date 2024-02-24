@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище VegetDBModelContainer" CdmEntityContainer="VegetDBEntities">
+    <EntitySetMapping Name="Importers">
+      <EntityTypeMapping TypeName="VegetDBModel.Importers">
+        <MappingFragment StoreEntitySet="Importers">
+          <ScalarProperty Name="idImporter" ColumnName="idImporter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="info" ColumnName="info" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="VegetDBModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+          <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DateSale" ColumnName="DateSale" />
+          <ScalarProperty Name="caunt" ColumnName="caunt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="VegetDBModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="idRole" ColumnName="idRole" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stocks">
+      <EntityTypeMapping TypeName="VegetDBModel.Stocks">
+        <MappingFragment StoreEntitySet="Stocks">
+          <ScalarProperty Name="idStocks" ColumnName="idStocks" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="idSal" ColumnName="idSal" />
+          <ScalarProperty Name="ImportersId" ColumnName="ImportersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="VegetDBModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="VegetDBModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="caunt" ColumnName="caunt" />
+          <ScalarProperty Name="DateDie" ColumnName="DateDie" />
+          <ScalarProperty Name="DateCrete" ColumnName="DateCrete" />
+          <ScalarProperty Name="SalId" ColumnName="SalId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CatId" ColumnName="CatId" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="idProd" ColumnName="idProd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SAL">
+      <EntityTypeMapping TypeName="VegetDBModel.SAL">
+        <MappingFragment StoreEntitySet="SAL">
+          <ScalarProperty Name="caunt" ColumnName="caunt" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="idSal" ColumnName="idSal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cat">
+      <EntityTypeMapping TypeName="VegetDBModel.Cat">
+        <MappingFragment StoreEntitySet="Cat">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

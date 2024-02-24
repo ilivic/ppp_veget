@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VegetDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Importers">
+    <Key>
+      <PropertyRef Name="idImporter" />
+    </Key>
+    <Property Name="idImporter" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Stocks" Relationship="Self.FK_Stocks_Importers" FromRole="Importers" ToRole="Stocks" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="idOrder" />
+    </Key>
+    <Property Name="idOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProdId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="DateSale" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="caunt" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="VegetDBModel.FK_Order_Users" FromRole="Order" ToRole="Users" />
+    <NavigationProperty Name="Products" Relationship="VegetDBModel.FK_Order_Products" FromRole="Order" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="idRole" />
+    </Key>
+    <Property Name="idRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="VegetDBModel.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Stocks">
+    <Key>
+      <PropertyRef Name="idStocks" />
+    </Key>
+    <Property Name="idStocks" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idSal" Type="Int32" Nullable="false" />
+    <Property Name="ImportersId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Importers" Relationship="Self.FK_Stocks_Importers" FromRole="Stocks" ToRole="Importers" />
+    <NavigationProperty Name="SAL" Relationship="VegetDBModel.FK_Stocks_SAL" FromRole="Stocks" ToRole="SAL" />
+  </EntityType>
+  <Association Name="FK_Stocks_Importers">
+    <End Role="Importers" Type="Self.Importers" Multiplicity="1" />
+    <End Role="Stocks" Type="Self.Stocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Importers">
+        <PropertyRef Name="idImporter" />
+      </Principal>
+      <Dependent Role="Stocks">
+        <PropertyRef Name="ImportersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VegetDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Importers" EntityType="Self.Importers" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Stocks" EntityType="Self.Stocks" />
+    <AssociationSet Name="FK_Stocks_Importers" Association="Self.FK_Stocks_Importers">
+      <End Role="Importers" EntitySet="Importers" />
+      <End Role="Stocks" EntitySet="Stocks" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="VegetDBModel.Users" />
+    <AssociationSet Name="FK_Order_Users" Association="VegetDBModel.FK_Order_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="VegetDBModel.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Products" EntityType="VegetDBModel.Products" />
+    <EntitySet Name="SAL" EntityType="VegetDBModel.SAL" />
+    <AssociationSet Name="FK_Order_Products" Association="VegetDBModel.FK_Order_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_SAL" Association="VegetDBModel.FK_Products_SAL">
+      <End Role="SAL" EntitySet="SAL" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stocks_SAL" Association="VegetDBModel.FK_Stocks_SAL">
+      <End Role="SAL" EntitySet="SAL" />
+      <End Role="Stocks" EntitySet="Stocks" />
+    </AssociationSet>
+    <EntitySet Name="Cat" EntityType="VegetDBModel.Cat" />
+    <AssociationSet Name="FK_Products_Cat" Association="VegetDBModel.FK_Products_Cat">
+      <End Role="Cat" EntitySet="Cat" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="VegetDBModel.FK_Order_Users" FromRole="Users" ToRole="Order" />
+    <NavigationProperty Name="Roles" Relationship="VegetDBModel.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK_Order_Users">
+    <End Type="VegetDBModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="VegetDBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Type="VegetDBModel.Roles" Role="Roles" Multiplicity="1" />
+    <End Type="VegetDBModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="idRole" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="idProd" />
+    </Key>
+    <Property Name="idProd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="CatId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="SalId" Type="Int32" Nullable="false" />
+    <Property Name="DateCrete" Type="DateTime" Precision="0" />
+    <Property Name="DateDie" Type="DateTime" Precision="0" />
+    <Property Name="caunt" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="VegetDBModel.FK_Order_Products" FromRole="Products" ToRole="Order" />
+    <NavigationProperty Name="SAL" Relationship="VegetDBModel.FK_Products_SAL" FromRole="Products" ToRole="SAL" />
+    <NavigationProperty Name="Cat" Relationship="VegetDBModel.FK_Products_Cat" FromRole="Products" ToRole="Cat" />
+  </EntityType>
+  <EntityType Name="SAL">
+    <Key>
+      <PropertyRef Name="idSal" />
+    </Key>
+    <Property Name="idSal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="caunt" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="VegetDBModel.FK_Products_SAL" FromRole="SAL" ToRole="Products" />
+    <NavigationProperty Name="Stocks" Relationship="VegetDBModel.FK_Stocks_SAL" FromRole="SAL" ToRole="Stocks" />
+  </EntityType>
+  <Association Name="FK_Order_Products">
+    <End Type="VegetDBModel.Products" Role="Products" Multiplicity="1" />
+    <End Type="VegetDBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="idProd" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ProdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_SAL">
+    <End Type="VegetDBModel.SAL" Role="SAL" Multiplicity="1" />
+    <End Type="VegetDBModel.Products" Role="Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAL">
+        <PropertyRef Name="idSal" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="SalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stocks_SAL">
+    <End Type="VegetDBModel.SAL" Role="SAL" Multiplicity="1" />
+    <End Type="VegetDBModel.Stocks" Role="Stocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAL">
+        <PropertyRef Name="idSal" />
+      </Principal>
+      <Dependent Role="Stocks">
+        <PropertyRef Name="idSal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Cat">
+    <Key>
+      <PropertyRef Name="idCat" />
+    </Key>
+    <Property Name="idCat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Products" Relationship="VegetDBModel.FK_Products_Cat" FromRole="Cat" ToRole="Products" />
+  </EntityType>
+  <Association Name="FK_Products_Cat">
+    <End Type="VegetDBModel.Cat" Role="Cat" Multiplicity="1" />
+    <End Type="VegetDBModel.Products" Role="Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat">
+        <PropertyRef Name="idCat" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

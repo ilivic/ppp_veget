@@ -1,0 +1,38 @@
+﻿<Page x:Class="Veget.PageApp.PageAdmin.PageMenuAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Veget.PageApp.PageAdmin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageMenuAdmin">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Background" Value="SkyBlue"/>
+        </Style>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.RowSpan="2">
+            <Button Content="посмотреть клинетов" Click="ClEvenShowUser"/>
+            <Button Content="добавить агрокультуру" Click="Button_Click"/>
+            <Button Content="добавить семена" Click="Button_Click_1"/>
+            <Button Content="выйти" Click="ClEventGoBack"/>
+        </StackPanel>
+        <Frame x:Name="MainAdminFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10"></Frame>
+    </Grid>
+</Page>

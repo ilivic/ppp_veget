@@ -1,0 +1,33 @@
+﻿<Page x:Class="Veget.PageApp.PageAuitho"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Veget.PageApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageAuitho">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+            <TextBlock Text="Login"/>
+            <TextBox x:Name="TxtLogin"/>
+            <TextBlock Text="Password"/>
+            <PasswordBox x:Name="TxtPassword"/>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Content="registration" Margin="10" Padding="10" Background="Green" Click="ClEventRegistration"/>
+                <Button Content="authorization" Margin="10" Padding="10" Background="SkyBlue" Click="ClEventAuthorization"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

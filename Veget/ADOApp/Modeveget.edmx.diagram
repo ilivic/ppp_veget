@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4f238e8a806441082bd8e3f21fa7a12" Name="Diagram1">
+        <EntityTypeShape EntityType="VegetDBModel.Importers" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="VegetDBModel.Order" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VegetDBModel.Roles" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VegetDBModel.Stocks" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="VegetDBModel.FK_Stocks_Importers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VegetDBModel.Users" Width="1.5" PointX="3" PointY="7.5" />
+        <AssociationConnector Association="VegetDBModel.FK_Order_Users" />
+        <AssociationConnector Association="VegetDBModel.FK_Users_Roles" />
+        <EntityTypeShape EntityType="VegetDBModel.Products" Width="1.5" PointX="8" PointY="1.625" />
+        <EntityTypeShape EntityType="VegetDBModel.SAL" Width="1.5" PointX="0.75" PointY="4" />
+        <AssociationConnector Association="VegetDBModel.FK_Order_Products" />
+        <AssociationConnector Association="VegetDBModel.FK_Products_SAL" />
+        <AssociationConnector Association="VegetDBModel.FK_Stocks_SAL" />
+        <EntityTypeShape EntityType="VegetDBModel.Cat" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="VegetDBModel.FK_Products_Cat" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
